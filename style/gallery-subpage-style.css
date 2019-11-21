@@ -1,0 +1,25 @@
+.intro-container {
+    width: 100%;
+    padding: 0 16%;
+    box-sizing: border-box;
+    margin-top: 100px;
+    height: 600px;
+}
+
+.intro-img {
+    float: left;
+    width: 500px;
+    margin-left: calc(50% - 250px);
+}
+
+.intro-text {
+    clear: both;
+    float: left;
+    display: block;
+    padding: 60px 0 0 0;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 30px;
+}

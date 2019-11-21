@@ -1,0 +1,374 @@
+<html>
+
+<head>
+    <title>AniChart</title>
+    <meta charset="utf-8">
+    <link rel='icon' href='logo.ico' type='image/x-icon' />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <style>
+        .gallery-list {
+            width: 100%;
+            padding: 0 16%;
+            box-sizing: border-box;
+            margin-top: 100px;
+            overflow: hidden;
+            /* height: 600px; */
+        }
+
+        .list-item {
+            float: left;
+            margin: 10px;
+            width: 210px;
+            border: 1px solid #dedede;
+            border-radius: 4px;
+            transition: box-shadow 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .list-item:hover {
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .list-item-img {
+            display: block;
+            width: 100%;
+            padding-bottom: 80%;
+            background-position: 0% 0%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: background-position 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+
+        .list-item-img:hover {
+            background-position: 100% 100%;
+        }
+
+        .list-item-text {
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .list-item-text font {
+            font-size: 10pt;
+        }
+
+        h3 {
+            clear: both;
+            margin-bottom: 60px;
+            border-bottom: 1px solid #3a3843;
+        }
+
+        .gapminder {
+            background-image: url("./img/exmp/gapminder.png");
+        }
+
+        .gapminder:hover {
+            background-image: url("./img/exmp/gapminder.gif");
+        }
+
+        .rainday {
+            background-image: url("./img/exmp/rainday.png");
+        }
+
+        .rainday:hover {
+            background-image: url("./img/exmp/rainday.gif");
+        }
+
+        .doughnut {
+            background-image: url("./img/exmp/doughnut.png");
+        }
+
+        .doughnut:hover {
+            background-image: url("./img/exmp/doughnut.gif");
+        }
+
+        .product {
+            background-image: url("./img/exmp/product.png");
+        }
+
+        .product:hover {
+            background-image: url("./img/exmp/product.gif");
+        }
+
+        .calories {
+            background-image: url("./img/exmp/calories.png");
+        }
+
+        .calories:hover {
+            background-image: url("./img/exmp/calories.gif");
+        }
+
+        .gantt {
+            background-image: url("./img/exmp/gantt.png");
+        }
+
+        .gantt:hover {
+            background-image: url("./img/exmp/gantt.gif");
+        }
+
+        .weather {
+            background-image: url("./img/exmp/weather.png");
+        }
+
+        .weather:hover {
+            background-image: url("./img/exmp/weather.gif");
+        }
+
+        .os {
+            background-image: url("./img/exmp/os.png");
+        }
+
+        .os:hover {
+            background-image: url("./img/exmp/os.gif");
+        }
+
+        .polio {
+            background-image: url("./img/exmp/polio.png");
+        }
+
+        .polio:hover {
+            background-image: url("./img/exmp/polio.gif");
+        }
+
+        .boston {
+            background-image: url("./img/exmp/boston.png");
+        }
+
+        .boston:hover {
+            background-image: url("./img/exmp/boston.gif");
+        }
+
+        .gdp {
+            background-image: url("./img/exmp/gdp.png");
+        }
+
+        .gdp:hover {
+            background-image: url("./img/exmp/gdp.gif");
+        }
+
+        .polio2 {
+            background-image: url("./img/exmp/polio2.png");
+        }
+
+        .polio2:hover {
+            background-image: url("./img/exmp/polio2.gif");
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id='backTop' class='back-top' onclick='toTop()'>
+        <i></i>
+    </div>
+    <header>
+        <img class='logo' src='./img/logo.png' />
+        <div class='menu-container'>
+            <ul class='menu'>
+                <li><a href='index.html'>HOME</a></li>
+                <li class='active-item'><a href='#'>GALLERY</a></li>
+                <li><a href='tutorial.html'>DOCUMENTATION</a></li>
+                <li><a href='#'>ABOUT</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class='container'>
+        <div class='gallery-list'>
+            <!-- <h3>Chart Transitions</h3> -->
+            <div class='list-item' onclick='window.location.href="./gallery/gapminder.html"'>
+                <div class='list-item-img gapminder'></div>
+                <div class='list-item-text'>
+                    <font>Life Expectancy</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/rainday.html"'>
+                <div class='list-item-img rainday'></div>
+                <div class='list-item-text'>
+                    <font>Rain Day</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/doughnut.html"'>
+                <div class='list-item-img doughnut'></div>
+                <div class='list-item-text'>
+                    <font>Doughnut purchases</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/product.html"'>
+                <div class='list-item-img product'></div>
+                <div class='list-item-text'>
+                    <font>Price increasing</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/calories.html"'>
+                <div class='list-item-img calories'></div>
+                <div class='list-item-text'>
+                    <font>Calories burned per hour</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/gantt.html"'>
+                <div class='list-item-img gantt'></div>
+                <div class='list-item-text'>
+                    <font>Event plan</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/weather.html"'>
+                <div class='list-item-img weather'></div>
+                <div class='list-item-text'>
+                    <font>Weather data in 4 cities</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/os.html"'>
+                <div class='list-item-img os'></div>
+                <div class='list-item-text'>
+                    <font>Mobile OS market share</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/polio.html"'>
+                <div class='list-item-img polio'></div>
+                <div class='list-item-text'>
+                    <font>Polio incidence rates 1950s</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/boston.html"'>
+                <div class='list-item-img boston'></div>
+                <div class='list-item-text'>
+                    <font>Boston weather</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/gdp.html"'>
+                <div class='list-item-img gdp'></div>
+                <div class='list-item-text'>
+                    <font>GDP of G7 countries</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/polio2.html"'>
+                <div class='list-item-img polio2'></div>
+                <div class='list-item-text'>
+                    <font>Polio incidence rates 1950 - 1953</font>
+                </div>
+            </div>
+        </div>
+        <!-- <div class='gallery-list'>
+            <h3>Chart Animations</h3>
+            <div class='list-item' onclick='window.location.href="./gallery/ringBar.html"'>
+                <div class='list-item-img ringBar'></div>
+                <div class='list-item-text'>
+                    <font>GDP of G7 Countries</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/boston.html"'>
+                <div class='list-item-img boston'></div>
+                <div class='list-item-text'>
+                    <font>Weather in Boston</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/activity.html"'>
+                <div class='list-item-img activity'></div>
+                <div class='list-item-text'>
+                    <font>Fitbit Activity</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/circleBar.html"'>
+                <div class='list-item-img' style='background-image: url("./img/exmp/circleBar.png")'></div>
+                <div class='list-item-text'>
+                    <font>fdsafsdfdsafds</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/mushroom.html"'>
+                <div class='list-item-img mushroom'></div>
+                <div class='list-item-text'>
+                    <font>Mushroom</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/nightingale.html"'>
+                <div class='list-item-img nightingale'></div>
+                <div class='list-item-text'>
+                    <font>Nightingale</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/os.html"'>
+                <div class='list-item-img os'></div>
+                <div class='list-item-text'>
+                    <font>Mobile OS</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/flights.html"'>
+                <div class='list-item-img flights'></div>
+                <div class='list-item-text'>
+                    <font>Flights</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/population.html"'>
+                <div class='list-item-img population'></div>
+                <div class='list-item-text'>
+                    <font>Population</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/matrix.html"'>
+                <div class='list-item-img matrix'></div>
+                <div class='list-item-text'>
+                    <font>Polio incidence rates</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/map.html"'>
+                <div class='list-item-img map'></div>
+                <div class='list-item-text'>
+                    <font>Polio incidence rates</font>
+                </div>
+            </div>
+        </div>
+        <div class='gallery-list'>
+            <h3></h3>
+            <div class='list-item' onclick='window.location.href="./gallery/vegaBar.html"'>
+                <div class='list-item-img vegaBar'></div>
+                <div class='list-item-text'>
+                    <font>Bar Chart</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/bar.html"'>
+                <div class='list-item-img groupedBar'></div>
+                <div class='list-item-text'>
+                    <font>Grouped Bar Chart</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/vegaLine.html"'>
+                <div class='list-item-img vegaLine'></div>
+                <div class='list-item-text'>
+                    <font>Line Chart</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/vegaPie.html"'>
+                <div class='list-item-img vegaPie'></div>
+                <div class='list-item-text'>
+                    <font>Pie Chart</font>
+                </div>
+            </div>
+            
+        </div> -->
+    </div>
+    <footer>
+        <div class='footer-content'>
+            <span><a href=''>Contact us</a></span> |
+            <span>© copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function () {
+            if (document.body.scrollTop > 680 || document.documentElement.scrollTop > 680) {
+                document.getElementById("backTop").style.bottom = '0px';
+            } else {
+                document.getElementById("backTop").style.bottom = '-34px';
+            }
+        };
+
+        function toTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1426 @@
+<html>
+
+<head>
+    <title>AniChart</title>
+    <meta charset="utf-8">
+    <link rel='icon' href='logo.ico' type='image/x-icon' />
+    <script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <style>
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0.7em 0 0.3em 0;
+        }
+
+        h1 {
+            vertical-align: middle;
+            color: black;
+            display: inline-block;
+            font-weight: 300;
+            font-size: 2.5em;
+            margin: 0.7em 0 0.3em 0;
+        }
+
+        h2 {
+            font-size: 1.75em;
+            font-weight: 500;
+            border-bottom: 1px solid #cccccc;
+            color: black;
+            margin-top: 1.5em;
+            padding-bottom: 1px;
+        }
+
+        h3 {
+            font-size: 1.5em ! important;
+            color: black;
+            margin-top: 1.5em;
+        }
+
+        p {
+            color: #373a3c;
+            display: block;
+        }
+
+        li p {
+            margin: 0.2em 0;
+        }
+
+        pre {
+            line-height: 1em;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            padding: 0px 10px;
+            display: block;
+            font-family: monospace;
+            white-space: pre;
+            margin: 1em 0px;
+            flex: 1;
+        }
+
+        code {
+            margin: 0 2px;
+            padding: 0 4px;
+            background: #f6f6f6;
+            border: 1px solid #ddd;
+            font-family: monospace;
+            font-size: 0.8em;
+        }
+
+        pre code {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2em;
+            white-space: pre-wrap;
+            border: none;
+            background: transparent;
+            font-family: monospace;
+        }
+
+        em {
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            padding: 0;
+            border-collapse: collapse;
+            display: table;
+            border-spacing: 2px;
+            border-color: grey;
+        }
+
+        table tr {
+            border-top: 1px solid #cccccc;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr th:first-child,
+        table tr td:first-child {
+            margin-top: 0;
+        }
+
+        table tr:nth-child(2n) {
+            background-color: #f8f8f8;
+        }
+
+        table tr th {
+            font-weight: bold;
+            border: 1px solid #cccccc;
+            text-align: left;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr td {
+            border: 1px solid #cccccc;
+            text-align: left;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+        }
+
+        table tr td a,
+        p a {
+            cursor: pointer;
+            color: #4682b4;
+        }
+
+        table tr td a:hover,
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        .video-container {
+            width: 100%;
+            padding: 0 16%;
+            box-sizing: border-box;
+            margin-top: 100px;
+            overflow: hidden;
+            /* height: 600px; */
+        }
+
+        .center-page {
+            display: flex;
+            flex-direction: column;
+            flex-flow: initial;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sidebar-container {
+            position: fixed;
+            display: block;
+            width: 200px;
+            flex: 0 0 auto;
+            margin-top: 1.7em;
+            padding-right: 0.2em;
+        }
+
+        .sidebar-nav {
+            display: block;
+            padding: 0;
+            margin: 0;
+            list-style-type: disc;
+        }
+
+        .sidebar-nav-item {
+            display: block;
+            text-align: -webkit-match-parent;
+        }
+
+        .sidebar-nav-item a {
+            display: block;
+            padding: 0.5em 0;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .sidebar-nav-item a:hover {
+            color: #4682b4;
+        }
+
+        .sub-nav,
+        .sub-sub-nav {
+            padding-left: 0px;
+            list-style-type: circle;
+            margin-block-start: 0px;
+            margin-block-end: 0px;
+            display: block;
+        }
+
+        .sub-sub-nav {
+            border-left: 2px solid #eee;
+        }
+
+        .sub-nav-item,
+        .sub-sub-nav-item {
+            padding-left: 1em;
+            padding-top: 0.25em;
+            border-left: 2px solid #eee;
+        }
+
+        .sub-sub-nav-item {
+            margin-left: 1em;
+        }
+
+        .main-content {
+            margin-left: 200px;
+            padding-bottom: 3em;
+            flex: 1 1 auto;
+        }
+
+        .hl-comment {
+            color: #998;
+            font-style: italic;
+        }
+
+        .hl-str {
+            color: #d14;
+        }
+
+        .hl-selector {
+            color: #0769ad;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .example {
+            display: flex;
+            align-items: stretch;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            flex-flow: row wrap;
+            width: 100%;
+            max-width: 786px;
+            overflow: auto;
+        }
+
+        .example .example-image {
+            /* flex: 1 1 0; */
+            /* margin-right: 10px; */
+            margin: 1em 10px 1em 0;
+            text-align: center;
+            background-color: white;
+            /* margin-bottom: 1em; */
+            align-self: center;
+        }
+
+        .example .example-image img {
+            max-width: 786px;
+        }
+
+        .example .example-code {
+            flex: 1.618 1 0;
+            margin: 0;
+            align-self: flex-start;
+            min-width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='backTop' class='back-top' onclick='toTop()'>
+        <i></i>
+    </div>
+    <header>
+        <img class='logo' src='./img/logo.png' />
+        <div class='menu-container'>
+            <ul class='menu'>
+                <li><a href='index.html'>HOME</a></li>
+                <li><a href='gallery.html'>GALLERY</a></li>
+                <li class='active-item'><a href='#'>DOCUMENTATION</a></li>
+                <li><a href='#'>ABOUT</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class='container'>
+        <div class='center-page'>
+            <aside class='sidebar-container'>
+                <ul class='sidebar-nav'>
+                    <li class='sidebar-nav-item'>
+                        <a id='overviewLink' href='#'>Overview</a>
+                    </li>
+                    <li class='sidebar-nav-item'>
+                        <a id='anichartLink' href='#'>AniChart</a>
+                    </li>
+                    <li class='sidebar-nav-item'>
+                        <a id='chartLevelLink' href='#'>Chart-Level Spec</a>
+                    </li>
+                    <ul class='sub-nav'>
+                        <li class='sidebar-nav-item sub-nav-item'>
+                            <a id='chartLink' href='#'>Chart</a>
+                        </li>
+                        <li class='sidebar-nav-item sub-nav-item'>
+                            <a id='facetLink' href='#'>Facet</a>
+                        </li>
+                        <li class='sidebar-nav-item sub-nav-item'>
+                            <a id='animationLink' href='#'>Animation</a>
+                        </li>
+                    </ul>
+                    <li class='sidebar-nav-item'>
+                        <a id='markLevelLink' href='#'>Mark-Level Spec</a>
+                    </li>
+                    <ul class='sub-nav'>
+                        <li class='sidebar-nav-item sub-nav-item'>
+                            <a id='selectionLink' href='#'>Selection</a>
+                        </li>
+                        <li class='sidebar-nav-item sub-nav-item'>
+                            <a id='groupingLink' href='#'>Grouping</a>
+                        </li>
+                        <li class='sidebar-nav-item sub-nav-item'>
+                            <a id='actionLink' href='#'>Action</a>
+                        </li>
+                    </ul>
+                    <li class='sidebar-nav-item'>
+                        <a id='webAppLink' href='#'>Web Application</a>
+                    </li>
+                </ul>
+            </aside>
+            <section class='main-content'>
+                <!-- Overview -->
+                <h1 id='overview'>Overview</h1>
+                <p>AniChart is a high-level grammar for animations. It provides a easy-understanding JSON syntax, and
+                    generates multi-view animations of the given visualization charts to support storytelling or
+                    analysis. AniChart can describe and create animations in a declarative format. To use AniChart, our
+                    compiler compiles the specification into a corresponding relation between time and visual attributes
+                    of the graphical marks in charts. Then it generates the animation by rendering frame by frame. The
+                    generated animation can be played online or exported as a GIF file.</p>
+                <p>This document describes the syntax of AniChart and how to use it in web applications.</p>
+
+
+
+                <!-- AniChart -->
+                <h1 id='anichart'>AniChart</h1>
+                <p>AniChart specification is a JSON object that describes a diverse range of animations of the given
+                    visualization charts.</p>
+                <p>The specification has three parameters:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>charts</td>
+                            <td>Array</td>
+                            <td>
+                                <p><em>Required</em>. An array of <a id='chartLink1' href='#'>chart</a> objects that
+                                    describes the input
+                                    visualization charts
+                                    used to
+                                    generate animations..
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>facet</td>
+                            <td>Object</td>
+                            <td>
+                                <p>An <a id='facetLink1' href='#'>facet</a> object to create multiple animation views
+                                    and
+                                    describes charts belong
+                                    to
+                                    each view.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>animations</td>
+                            <td>Array</td>
+                            <td>
+                                <p>An array of <a id='animationLink1' href='#'>animation</a> objects
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre>
+                    <code>
+<span class='hl-comment'>//Top-level View Specification</span>
+{
+    <span class='hl-str'>"charts"</span> : [...],
+    <span class='hl-str'>"facet"</span> : ...,
+    <span class='hl-str'>"animations"</span> : [...]
+}</code>
+                </pre>
+
+
+
+                <!-- Charts -->
+                <h1 id='chart-level'>Chart-Level Spec</h1>
+                <p>Specificaitons that describe the sources, grouping according to facet views, and animations of the
+                    input visualization charts.</p>
+
+                <h2 id='chart'>Chart Object</h2>
+                <p>A <code>chart</code> object describes one input
+                    visualization chart used to
+                    generate animations.</p>
+                <p>For example, import a line chart.</p>
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"source"</span> : "./lineChart.dsvg"
+}</code>
+                </pre>
+                <p>A <code>chart</code> object can contain the following properties:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>String</td>
+                            <td>
+                                <p>Pick an id for the visualization chart given by <code>source</code> property.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>source</td>
+                            <td>String</td>
+                            <td>
+                                <p><em>Required</em>. Fetches the visualization chart file at the specified input
+                                    URL
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>start</td>
+                            <td>Number</td>
+                            <td>
+                                <p>Start index of the input files</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>end</td>
+                            <td>Number</td>
+                            <td>
+                                <p>End index of the input files</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>For example, we can pick an id for the chart (form lineChart0.dsvg to lineChart10.dsvg).</p>
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"id"</span> : "lineChart",
+    <span class='hl-str'>"source"</span> : "./lineChart.dsvg" 
+}</code>
+                </pre>
+                <p>Or, we can import a series of charts.</p>
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"source"</span> : "./lineChart",
+    <span class='hl-str'>"start"</span> : 0,
+    <span class='hl-str'>"end"</span> : 10
+}</code>
+                </pre>
+                <pre>
+                    <code>
+<span class='hl-comment'>//Top-level View Specification</span>
+{
+    <span class='hl-str'>"charts"</span> : [
+        {...},
+        ...
+    ],
+    ...
+}</code>
+                </pre>
+
+
+
+                <!-- Facet -->
+                <h2 id='facet'>Facet Object</h2>
+                <p>The <code>facet</code> object facets views for multi-view animation. We can then specify
+                    charts
+                    for each view to generate animations.</p>
+                <div class='example'>
+                    <div class='example-image'>
+                        <img src='img/facet-exmp.png' />
+                    </div>
+                    <pre class='example-code'>
+                        <code>
+{
+    <span class='hl-str'>"charts"</span> : [
+        {
+            <span class='hl-str'>"id"</span> : "lineChart1",
+            <span class='hl-str'>"source"</span> : "./lineChart1.dsvg"
+        },
+        {
+            <span class='hl-str'>"id"</span> : "lineChart2",
+            <span class='hl-str'>"source"</span> : "./lineChart2.dsvg"
+        }
+    ],
+    <span class='hl-str'>"facet"</span> : {
+        <span class='hl-str'>"type"</span> : "column",
+        <span class='hl-str'>"views"</span> : [
+            {"frames": ["lineChart1"]}, 
+            {"frames":["lineChart2"]}
+        ]
+    },
+    ...
+}
+                        </code>
+                    </pre>
+                </div>
+                <p>A <code>facet</code> object can contain the following properties:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>type</td>
+                            <td>String</td>
+                            <td>
+                                <p>How to layout the views. One of <code>row</code> or <code>column</code>.
+                                </p>
+                                <p><strong>Default</strong> value is <code>column</code>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>views</td>
+                            <td>Array</td>
+                            <td>
+                                <p>An array of view objects specifying which charts belong to each view. Each object can have either of the following attributes: <code>frames</code> or <code>range</code>,
+                                    <code>frames</code> is an array of chart ids and <code>range</code> is a pair of chart indexs.
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre>
+                    <code>
+<span class='hl-comment'>//Top-level View Specification</span>
+{
+    <span class='hl-str'>"charts"</span> : [...],
+    <span class='hl-str'>"facet"</span> : {...},
+    ...
+}</code>
+                </pre>
+
+
+
+                <!-- Animation -->
+                <h2 id='animation'>Animation Object</h2>
+                <p>An <code>Animation</code> object describes the animations of charts. It selects marks from the chart
+                    by <code>selection</code>, animations described by this animation object will be bind to those
+                    marks. <code>grouping</code> decides the minimum unit during animaiton (marks that animate
+                    together), and their timing relations. And <code>actions</code> specify animation parameters like
+                    type of animation, duration of the animation of each unit, and so on.</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>offset</td>
+                            <td>Number or Object</td>
+                            <td>
+                                <p>The offset time before this animation. One of: 1) number indicates time in <i>ms</i>
+                                    or
+                                    2) <a id='offsetLink2' href='#'>offset</a> object.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>reference</td>
+                            <td>String</td>
+                            <td>
+                                <p>Specify the order of this animation. One of
+                                    <code>start with previous</code> or <code>start after previous</code>.</p>
+                                <p><strong>Default</strong> value is <code>start with previous</code>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>selection</td>
+                            <td>String</td>
+                            <td>
+                                <p><em>Required</em>. Selectors to select marks from the chart.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>grouping</td>
+                            <td>Object</td>
+                            <td>
+                                <p>A <a id='groupingLink2' href='#'>grouping</a> object that decides the minimum unit
+                                    during
+                                    animtion.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>actions</td>
+                            <td>Array</td>
+                            <td>
+                                <p>An array of <a id='actionLink1' href='#'>action</a> objects that sepcifies animations
+                                    parameters like
+                                    type of animation, duration of the animation of each unit, and so on.
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre>
+                    <code>
+<span class='hl-comment'>//Top-level View Specification</span>
+{
+    <span class='hl-str'>"charts"</span> : [...],
+    <span class='hl-str'>"facet"</span> : {...},
+    <span class='hl-str'>"animations"</span> : [
+        {...},
+        ...
+    ]
+}</code>
+                </pre>
+
+
+
+                <h1 id='mark-level'>Mark-Level Spec</h1>
+                <p>These are the parameters of the <code>animation</code> object.</p>
+
+
+
+
+                <!-- selection -->
+                <h2 id='selection'>Selection</h2>
+                <p>Borrowing form CSS 1-3, AniChart provides a set of tools for matching marks in given charts. The W3C
+                    CSS specification contains the <a
+                        href='https://www.w3.org/TR/CSS21/syndata.html#value-def-identifier'>complete set of rules
+                        regarding valid CSS selectors</a>.</p>
+                <pre class='example-code'>
+                    <code>
+{
+<span class='hl-str'>"selection"</span> : ".dot",<span class='hl-comment'>//select marks with the class name as "dot".</span>
+...
+}</code>
+                </pre>
+                <p>Here we list some of the commonly used selectors:</p>
+                <ul>
+                    <li>
+                        <p class='hl-selector'>Class Selector (".class")</p>
+                        <p>Select all marks which have the given class name.</p>
+                    </li>
+                    <li>
+                        <p class='hl-selector'>ID Selector ("#id")</p>
+                        <p>Select the mark the given id.</p>
+                    </li>
+                    <li>
+                        <p class='hl-selector'>All Selector ("*")</p>
+                        <p>Select all the marks.</p>
+                    </li>
+                    <li>
+                        <p class='hl-selector'>Element Selector ("tag")</p>
+                        <p>Select all marks which have the given tag name.</p>
+                    </li>
+                    <li>
+                        <p class='hl-selector'>Attribute Equals Selector ([name="value"])</p>
+                        <p>Select all marks whose values of the given attribute are equal to a certain given value.</p>
+                    </li>
+                    <li>
+                        <p class='hl-selector'>Multiple Selector ("selector1, selector2, selectorN")</p>
+                        <p>Select all marks with all the specified selectors.</p>
+                    </li>
+                </ul>
+
+
+
+                <!-- grouping -->
+                <h2 id='grouping'>Grouping Object</h2>
+                <p>A <code>grouping</code> object groups the selected marks by attributes of the data they encoded in a
+                    hierarchical manner. Each group is a minimum animation unit, and marks within the same unit will be
+                    animated together. The timing relationships between units like animation order, delay are also
+                    specified.</p>
+                <div class='example'>
+                    <div class='example-image'>
+                        <img src='img/grouping-exmp.png' />
+                    </div>
+                    <pre class='example-code'>
+                        <code>
+{
+    <span class='hl-str'>"selection"</span> : ".dot",<span class='hl-comment'>//all marks are selected.</span>
+    <span class='hl-comment'>//the following code groups dots into cells as shown in the figure.</span>
+    <span class='hl-str'>"grouping"</span> : {
+        <span class='hl-str'>"groupBy"</span> : "Odor",<span class='hl-comment'>//all dots will be grouped into columns.</span>
+        <span class='hl-str'>"reference"</span> : "previousEnd",<span class='hl-comment'>//animate column after column.</span>
+        <span class='hl-str'>"grouping"</span> : {
+            <span class='hl-str'>"groupBy"</span> : "Surface",<span class='hl-comment'>//dots in each column are further grouped into rows.</span>
+            <span class='hl-str'>"reference"</span> : "previousEnd",<span class='hl-comment'>//animate row after row.</span>
+        }
+    },
+    ...
+}
+                        </code>
+                    </pre>
+                </div>
+                <p>A <code>grouping</code> object can contain the following parameters:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>groupBy</td>
+                            <td>String</td>
+                            <td>
+                                <p>Categorical data attributes or <code>id</code>.</p>
+                                <p><strong>Default</strong> value is <code>id</code>.</p>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>reference</td>
+                            <td>String</td>
+                            <td>
+                                <p>Specify the aniamtion order of the resulted groups. One of
+                                    <code>start with previous</code> or <code>start after previous</code>.</p>
+                                <p><strong>Default</strong> value is <code>start with previous</code>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>delay</td>
+                            <td>Number</td>
+                            <td>
+                                <p>Time delays between groups.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>sort</td>
+                            <td>Object</td>
+                            <td>
+                                <p>A <a id='sortLink' href='#'>sort</a> object that specifies the animation order of the
+                                    resulted
+                                    groups.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>grouping</td>
+                            <td>Object</td>
+                            <td>
+                                <p>A nested <a id='groupingLink1' href='#'>grouping</a> object that specifies the
+                                    further grouping of the
+                                    resulted groups.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre>
+                    <code>
+<span class='hl-comment'>//Top-level View Specification</span>
+{
+    <span class='hl-str'>"charts"</span> : [...],
+    <span class='hl-str'>"facet"</span> : {...},
+    <span class='hl-str'>"animations"</span> : [
+        {
+            <span class='hl-str'>"selection"</span> : ...,
+            <span class='hl-str'>"grouping"</span> : {...},
+            ...
+        },
+        ...
+    ]
+}</code>
+                </pre>
+
+
+
+                <h3 id='sort'>Sort Object</h3>
+                <p>A <code>sort</code> object specifies the animation order of the mark groups.</p>
+                <pre>
+                    <code>
+<span class='hl-comment'>//groups will be animated with their value of "attr" in ascending order</span>
+{
+    <span class='hl-str'>"field"</span> : "attr",
+    <span class='hl-str'>"order"</span> : "ascending"
+}</code>
+                </pre>
+                <p>A <code>sort</code> object can contian the following parameters:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>field</td>
+                            <td>String</td>
+                            <td>
+                                <p>Data attributes or <code>id</code></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>order</td>
+                            <td>String or Array</td>
+                            <td>
+                                <p>Specify the order of the values of the attribute selected in <code>field</code>. One
+                                    of: 1) <code>ascending</code>, 2) <code>descending</code>, or 3) an array of the
+                                    values of this attribute.</p>
+                                <p><strong>Default</strong> value is <code>ascending</code>.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <h2 id='action'>Action Object</h2>
+                <p>An <code>animation</code> can have multiple actions. For example the marks can wipe in from bottom
+                    while they wipe
+                    in from left. An <code>action</code> object describe parameters of one action, including type,
+                    easing, duration, order, and timing offset of the action.</p>
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"type"</span> : "fade",
+    <span class='hl-str'>"easing"</span> : "easeOutBounce",
+    <span class='hl-str'>"duration"</span> : 1000<span class='hl-comment'>//ms</span>
+}</code>
+                </pre>
+                <p>An <code>action</code> can contain the following parameters:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>type</td>
+                            <td>String</td>
+                            <td>
+                                <p><em>Required</em>. Type of the action. One of <code>appear</code>, <code>fade</code>,
+                                    <code>wipe bottom</code>, <code>wipe top</code>, <code>wipe left</code>,
+                                    <code>wipe right</code>, <code>wheel</code>, <code>circle</code>, <code>grow</code>,
+                                    <code>custom</code>, <code>fade out</code>, <code>wipe out from left</code>,
+                                    <code>wipe out from top</code>, <code>wipe out from right</code>,
+                                    <code>wipe out from bottom</code>, <code>wheel out</code>, <code>circle out</code>,
+                                    <code>degrow</code>, <code>magic move</code>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>offset</td>
+                            <td>Number or Object</td>
+                            <td>
+                                <p>The offset time before this action. One of: 1) number indicates time in <i>ms</i> or
+                                    2) <a id='offsetLink1' href='#'>offset</a> object.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>reference</td>
+                            <td>String</td>
+                            <td>
+                                <p>Specify the order of this action. One of
+                                    <code>start with previous</code> or <code>start after previous</code>.</p>
+                                <p><strong>Default</strong> value is <code>start with previous</code>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>easing</td>
+                            <td>String</td>
+                            <td>
+                                <p>Specify the easing function. One of <code>easeLinear</code>, <code>easeInQuad</code>,
+                                    <code>easeOutQuad</code>, <code>easeInOutQuad</code>, <code>easeInCubic</code>,
+                                    <code>easeOutCubic</code>, <code>easeInOutCubic</code>, <code>easeOutBounce</code>.
+                                </p>
+                                <p><strong>Default</strong> value is <code>easeLinear</code>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>duration</td>
+                            <td>Number or Object</td>
+                            <td>
+                                <p>The duration time of this action. One of: 1) number indicates time in <i>ms</i> or 2)
+                                    <a id='durationLink' href='#'>duration</a>
+                                    object.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>attribute</td>
+                            <td>Object</td>
+                            <td>
+                                <p>When choosing <code>custom</code> type, we can select a specific visual attribute and
+                                    specify its status changing to create custom animations with an
+                                    <a id='attributeLink' href='#'>attribute</a> object.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>For example we can animate marks with the same duration:</p>
+                <div class='example'>
+                    <div class='example-image'>
+                        <img style='height:155px;' src='img/sameDuration-exmp.gif' />
+                    </div>
+                    <pre>
+                        <code>
+    {
+        <span class='hl-str'>"selection"</span> : ".Shape2",
+        <span class='hl-str'>"actions"</span> : [
+            {
+                <span class='hl-str'>"type"</span> : "wipe bottom",
+                <span class='hl-str'>"duration"</span> : 1000
+            }
+        ]
+    }</code>
+                    </pre>
+                </div>
+
+
+                <p>Or we can control the animation speed by defining the minimum duration time with <a
+                        id='durationLink1' href='#'>duration</a> object:</p>
+                <div class='example'>
+                    <div class='example-image'>
+                        <img style='height:197px;' src='img/sameSpeed-exmp.gif' />
+                    </div>
+                    <pre>
+                        <code>
+    {
+        <span class='hl-str'>"selection"</span> : ".Shape2",
+        <span class='hl-str'>"actions"</span> : [
+            {
+                <span class='hl-str'>"type"</span> : "wipe bottom",
+                <span class='hl-str'>"duration"</span> : {
+                    <span class='hl-str'>"field"</span> : "percentage",
+                    <span class='hl-str'>"minDuration"</span> : 300
+                }
+            }
+        ]
+    }</code>
+                    </pre>
+                </div>
+
+                <pre>
+                    <code>
+<span class='hl-comment'>//Top-level View Specification</span>
+{
+    <span class='hl-str'>"charts"</span> : [...],
+    <span class='hl-str'>"facet"</span> : {...},
+    <span class='hl-str'>"animations"</span> : [
+        {
+            <span class='hl-str'>"selection"</span> : ...,
+            <span class='hl-str'>"grouping"</span> : {...},
+            <span class='hl-str'>"actions"</span> : [
+                {...},
+                ...
+            ]
+        },
+        ...
+    ]
+}</code>
+                </pre>
+
+
+                <!-- offset object -->
+                <h3 id='offset'>Offset Object</h3>
+                <p>An <code>offset</code> object defines the offset time of marks according to the values of one of
+                    their data attributes.</p>
+                <p>For example, marks selected have a data attribute called "attr" with its values ranging from 10 to
+                    100, we define the minimum offset time as 200ms, then the offset time of the mark whose "attr" value
+                    is 10
+                    will be 200ms, and the one whose "attr" value is 100 will be 2,000ms. The example code is shown
+                    below:</p>
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"field"</span> : "attr",
+    <span class='hl-str'>"minOffset"</span> : 200
+}</code>
+                </pre>
+                <p>An <code>offset</code> object can contian the following parameters:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>field</td>
+                            <td>String</td>
+                            <td>
+                                <p><em>Required</em>. Data attribute.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>minOffset</td>
+                            <td>Number</td>
+                            <td>
+                                <p>The offset time of the mark with minimum value of the specified data attribute.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <!-- duration object -->
+                <h3 id='duration'>Duration Object</h3>
+                <p>A <code>duration</code> object defines the duration time of marks according to the values of one of
+                    their data
+                    attributes.</p>
+                <p>For example, marks selected have a data attribute called "attr" with its values ranging from 10 to
+                    100, we define the
+                    minimum duration as 200ms, then the duration of the mark whose "attr" value is 10 will be 200ms, and
+                    the one whose
+                    "attr" value is 100 will be 2,000ms. The example code is shown below:</p>
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"field"</span> : "attr",
+    <span class='hl-str'>"minDuration"</span> : 200
+}</code>
+                </pre>
+                <p>A <code>duration</code> object can contian the following parameters:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>field</td>
+                            <td>String</td>
+                            <td>
+                                <p><em>Required</em>. Data attribute.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>minDuration</td>
+                            <td>Number</td>
+                            <td>
+                                <p>The duration of the mark with minimum value of the specified data attribute.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <!-- attribute object -->
+                <h3 id='attribute'>Attribute Object</h3>
+                <p>An <code>attribute</code> object picks one of the visual parameters and defines the start and end
+                    value of this parameter using percentages.</p>
+
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"attrName"</span> : "attr",
+    <span class='hl-str'>"from"</span> : 0,
+    <span class='hl-str'>"to"</span> : 1
+}</code>
+                </pre>
+                <p>An <code>attribute</code> object can contian the following parameters:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>attrName</td>
+                            <td>String</td>
+                            <td>
+                                <p><em>Required</em>. Data attribute.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>from</td>
+                            <td>Number</td>
+                            <td>
+                                <p>The start value of the specified data attribute using percentages. Ranging from 0 to
+                                    1.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>to</td>
+                            <td>Number</td>
+                            <td>
+                                <p>The end value of the specified data attribute using percentages. Ranging from 0 to 1.
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <!-- web Application -->
+                <h1 id='webapp'>Web Application</h1>
+                <p>We can use the following snippet to link to the latest release:</p>
+                <pre>
+                    <code>
+&lt;<span class='hl-str'>script</span> src=&quot;http://www.njvis.net/AniChartWeb/anichart.min.js&quot;&gt;&lt;/<span class='hl-str'>script</span>&gt;"</code>
+                </pre>
+
+                <p>We can create an animated visualization on the web page using the following code:</p>
+                <pre>
+                    <code>
+&lt;div id='chartContainer'&gt;&lt;/div&gt;
+&lt;div id='videoContainer'&gt;&lt;/div&gt;
+&lt;script&gt;
+    aniChart.<span class='hl-str'>loadSpec</span>('./specs/line2.ac', (spec) => {
+        aniChart.<span class='hl-str'>renderSpec</span>(spec);
+        aniChart.<span class='hl-str'>play</span>();
+    })
+&lt;/script&gt;</code>
+                </pre>
+
+                <p>AniChart provides the following variables and functions to create or customize animations.</p>
+
+                <h3>aniChart.loadSpec()</h3>
+                <p>This function fetches the AC format spec file at the specified input URL and returns the spec as a
+                    JSON object.</p>
+                <pre>
+                    <code>
+aniChart.<span class='hl-str'>loadSpec</span>('./spec.ac', (spec) => {
+    console.log(spec);
+})</code>
+                </pre>
+
+                <h3>aniChart.renderSpec(spec)</h3>
+                <p>This function renders the animation using the input spec.</p>
+
+                <h3>aniChart.play()</h3>
+                <p>Call this function to play the rendered animation.</p>
+
+                <br />
+                <p>The following functions and variables can be used to create a customized animation player:</p>
+
+                <h3>aniChart.frameRate</h3>
+                <p>This is the frame rate of the animation.</p>
+                <pre>
+                    <code>
+console.log(aniChart.<span class='hl-str'>frameRate</span>);<span class='hl-comment'>//25</span></code>
+                </pre>
+
+                <h3>aniChart.duration()</h3>
+                <p>This is the duration time of the entire animation.</p>
+                <pre>
+                    <code>
+console.log(aniChart.<span class='hl-str'>duration</span>());<span class='hl-comment'>//1000</span></code>
+                </pre>
+
+                <h3>aniChart.renderFrame(time)</h3>
+                <p>This returns the visual effects of all the marks at a specific time point.</p>
+                <pre>
+                    <code>
+aniChart.<span class='hl-str'>renderFrame</span>(300);<span class='hl-comment'>//render the frame at 300ms</span></code>
+                </pre>
+
+                <h3>aniChart.reset()</h3>
+                <p>Reset all status.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- <h1>Charts</h1>
+                <p>The <code>charts</code> property imports the visualization charts to generate animations.</p>
+                <h2>test2</h2>
+                <pre>
+                    <code>
+{
+    <span class='hl-str'>"data"</span>: ... ,
+    "transform": [
+    ...
+    ],
+    "mark": ... ,
+    "encoding": ... ,
+    ...
+}
+                    </code>
+                </pre>
+                <div class='example'>
+                    <div class='example-image'>
+                        <img src='img/logo.png' />
+                    </div>
+                    <pre class='example-code'>
+                        <code>
+                            {
+                            <span class='hl-str'>"data"</span>: ... ,
+                            "transform": [
+                            ...
+                            ],
+                            "mark": ... ,
+                            "encoding": ... ,
+                            ...
+                            }
+                        </code>
+                    </pre>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>text</td>
+                            <td>String
+                            </td>
+                            <td>
+                                <p><strong><em>Required.</em></strong> The title text.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>anchor</td>
+                            <td>TitleAnchor
+                            </td>
+                            <td>
+                                <p>The anchor position for placing the title. One of <code>"start"</code>,
+                                    <code>"middle"</code>, or
+                                    <code>"end"</code>. For example, with an orientation of top these anchor
+                                    positions
+                                    map to a left-,
+                                    center-, or right-aligned title.</p>
+
+                                <p><strong>Default value:</strong> <code>"middle"</code> for <a
+                                        href="https://vega.github.io/vega-lite/docs/spec.html">single</a> and <a
+                                        href="https://vega.github.io/vega-lite/docs/layer.html">layered</a> views.
+                                    <code>"start"</code> for other composite views.</p>
+
+                                <p><strong>Note:</strong> <a href="https://github.com/vega/vega-lite/issues/2875">For
+                                        now</a>,
+                                    <code>anchor</code> is only customizable only for <a
+                                        href="https://vega.github.io/vega-lite/docs/spec.html">single</a> and <a
+                                        href="https://vega.github.io/vega-lite/docs/layer.html">layered</a> views.
+                                    For
+                                    other composite
+                                    views, <code>anchor</code> is always <code>"start"</code>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>angle</td>
+                            <td>Number
+                            </td>
+                            <td>
+                                <p>Angle in degrees of title text.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> -->
+            </section>
+        </div>
+    </div>
+    <footer>
+        <div class='footer-content'>
+            <span><a href=''>Contact us</a></span> |
+            <span>© copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function () {
+            if (document.body.scrollTop > 680 || document.documentElement.scrollTop > 680) {
+                document.getElementById("backTop").style.bottom = '0px';
+            } else {
+                document.getElementById("backTop").style.bottom = '-34px';
+            }
+        };
+
+        function toTop() {
+            $("html, body").animate({
+                scrollTop: 0
+            }, { duration: 500, easing: "swing" });
+
+            // document.body.scrollTop = 0; // For Safari
+            // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+        $(document).ready(function () {
+            $("#overviewLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#overview").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#anichartLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#anichart").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#chartLevelLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#chart-level").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#chartLink, #chartLink1").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#chart").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#facetLink, #facetLink1").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#facet").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#animationLink, #animationLink1").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#animation").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#markLevelLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#mark-level").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#selectionLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#selection").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#groupingLink, #groupingLink1, #groupingLink2").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#grouping").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#actionLink, #actionLink1").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#action").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#durationLink, #durationLink1").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#duration").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#sortLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#sort").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#offsetLink1, #offsetLink2").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#offset").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#attributeLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#attribute").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+            $("#webAppLink").click(function () {
+                $("html, body").animate({
+                    scrollTop: $("#webapp").offset().top - 90
+                }, { duration: 500, easing: "swing" });
+                return false;
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>AniChart</title>
+    <meta charset="utf-8">
+    <link rel='icon' href='../logo.ico' type='image/x-icon' />
+    <link rel="stylesheet" type="text/css" href="../style/style.css" />
+    <link rel="stylesheet" type="text/css" href="../style/gallery-subpage-style.css" />
+    </style>
+</head>
+
+<body>
+    <div id='backTop' class='back-top' onclick='toTop()'>
+        <i></i>
+    </div>
+    <header>
+        <img class='logo' src='../img/logo.png' />
+        <div class='menu-container'>
+            <ul class='menu'>
+                <li><a href='../index.html'>HOME</a></li>
+                <li class='active-item'><a href='../gallery.html'>GALLERY</a></li>
+                <li><a href='../tutorial.html'>DOCUMENTATION</a></li>
+                <li><a href='#'>ABOUT</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class='container'>
+        <div class='intro-container'>
+            <img class='intro-img' src='../img/exmp/weather.gif' />
+            <div class='intro-text'>
+                <h2>Weather data in 4 cities</h2>
+                <p><b>Animation : </b></p>
+                <button
+                    onclick='window.location.href="http://www.njvis.net/aniSpecRender.2.0/index.html?exmp=weather_1"'>Open
+                    this example in our online editor</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class='footer-content'>
+            <span><a href=''>Contact us</a></span> |
+            <span>© copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function () {
+            if (document.body.scrollTop > 680 || document.documentElement.scrollTop > 680) {
+                document.getElementById("backTop").style.bottom = '0px';
+            } else {
+                document.getElementById("backTop").style.bottom = '-34px';
+            }
+        };
+
+        function toTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</body>
+
+</html>

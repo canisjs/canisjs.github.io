@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <title>AniChart</title>
+    <meta charset="utf-8">
+    <link rel='icon' href='logo.ico' type='image/x-icon' />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <style>
+        .teaser {
+            background-image: url('./img/teaserBackground.svg');
+            background-attachment: fixed;
+            width: 100%;
+            height: 600px;
+            margin-bottom: 160px;
+        }
+
+        .teaser-text-container {
+            position: absolute;
+            z-index: 200;
+            width: 600px;
+            padding: 120px 0;
+            margin-left: 16%;
+        }
+
+        .teaser-gif-container {
+            width: 500px;
+            padding: 50px 0;
+            position: absolute;
+            z-index: 200;
+            margin-left: calc(16% + 660px);
+        }
+
+        .teaser-gif {
+            width: 100%;
+        }
+
+        .teaser-shadow {
+            width: 100%;
+            height: 50px;
+            background: radial-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0) 60%);
+        }
+
+        .feature-container {
+            width: 100%;
+            height: 300px;
+            box-sizing: border-box;
+            padding: 0 16%;
+            display: flex;
+            margin-top: 100px;
+        }
+
+        .feature-illus {
+            height: 300px;
+        }
+
+        .feature-text {
+            flex: 1;
+            box-sizing: border-box;
+            padding: 20px 0 0 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='backTop' class='back-top' onclick='toTop()'>
+        <i></i>
+    </div>
+    <header>
+        <img class='logo' src='./img/logo.png' />
+        <div class='menu-container'>
+            <ul class='menu'>
+                <li class='active-item'><a href='#'>HOME</a></li>
+                <li><a href='gallery.html'>GALLERY</a></li>
+                <li><a href='tutorial.html'>DOCUMENTATION</a></li>
+                <li><a href='#'>ABOUT</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class='container'>
+        <div class='teaser'>
+            <div class='teaser-text-container'>
+                <h1>Bring your Charts to Life</h1>
+                <p>AniChart is as fdjsakfd djksafjdsk jfkdsa jkl;jklafjd j fdksfdksafjdskalfjdskafd dsfdsjk fds jkfds
+                    fjdks afjdksafdksafdska klfjakf kjka jkds jkdsa kdsaj kjk saf kjkf skal jkls.</p>
+                <button class='launchBtn' onclick="window.location.href='http://www.njvis.net/aniSpecRender.2.0';">Online Editor</button>
+            </div>
+            <div class='teaser-gif-container'>
+                <img class='teaser-gif' src='./img/teaser.gif' />
+                <div class='teaser-shadow'></div>
+            </div>
+        </div>
+        <div class='feature-container'>
+            <img class='feature-illus' src='./img/placeHolder.png' />
+            <div class='feature-text'>
+                <h2>Feature 1</h2>
+                <p>this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is
+                    feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature
+                    1,this is feature 1,</p>
+            </div>
+        </div>
+        <div class='feature-container'>
+            <div class='feature-text'>
+                <h2>Feature 2</h2>
+                <p>this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is
+                    feature 1,this
+                    is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature
+                    1,</p>
+            </div>
+            <img class='feature-illus' src='./img/placeHolder.png' />
+        </div>
+        <div class='feature-container'>
+            <img class='feature-illus' src='./img/placeHolder.png' />
+            <div class='feature-text'>
+                <h2>Feature 3</h2>
+                <p>this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is
+                    feature 1,this
+                    is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature 1,this is feature
+                    1,</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class='footer-content'>
+            <span><a href=''>Contact us</a></span> |
+            <span>© copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function () {
+            if (document.body.scrollTop > 680 || document.documentElement.scrollTop > 680) {
+                document.getElementById("backTop").style.bottom = '0px';
+            } else {
+                document.getElementById("backTop").style.bottom = '-34px';
+            }
+        };
+
+        function toTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</body>
+
+</html>

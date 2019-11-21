@@ -1,0 +1,12 @@
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='600px' width='4000px'>
+    <defs>
+        <linearGradient id='fadeFill' x1='0' x2='0' y1='0' y2='100%' gradientUnits='userSpaceOnUse'>
+            <stop stop-color='rgba(231, 231, 233, 0.8)' offset='0%'/>
+            <stop stop-color='rgba(231, 231, 233, 0.3)' offset='70%'/>
+            <stop stop-color='rgba(253, 253, 255, 0.14)' offset='100%'/>
+        </linearGradient>
+    </defs>
+    <text x='0' y='600' fill='url(#fadeFill)' font-size='500px' font-family='Oswald'>
+        AniChart
+    </text>
+</svg>
