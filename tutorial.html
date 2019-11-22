@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>AniChart</title>
+    <title>Canis</title>
     <meta charset="utf-8">
     <link rel='icon' href='logo.ico' type='image/x-icon' />
     <script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
@@ -291,7 +291,7 @@
                         <a id='overviewLink' href='#'>Overview</a>
                     </li>
                     <li class='sidebar-nav-item'>
-                        <a id='anichartLink' href='#'>AniChart</a>
+                        <a id='anichartLink' href='#'>Canis</a>
                     </li>
                     <li class='sidebar-nav-item'>
                         <a id='chartLevelLink' href='#'>Chart-Level Spec</a>
@@ -329,19 +329,19 @@
             <section class='main-content'>
                 <!-- Overview -->
                 <h1 id='overview'>Overview</h1>
-                <p>AniChart is a high-level grammar for animations. It provides a easy-understanding JSON syntax, and
+                <p>Canis is a high-level grammar for animations. It provides a easy-understanding JSON syntax, and
                     generates multi-view animations of the given visualization charts to support storytelling or
-                    analysis. AniChart can describe and create animations in a declarative format. To use AniChart, our
+                    analysis. Canis can describe and create animations in a declarative format. To use Canis, our
                     compiler compiles the specification into a corresponding relation between time and visual attributes
                     of the graphical marks in charts. Then it generates the animation by rendering frame by frame. The
                     generated animation can be played online or exported as a GIF file.</p>
-                <p>This document describes the syntax of AniChart and how to use it in web applications.</p>
+                <p>This document describes the syntax of Canis and how to use it in web applications.</p>
 
 
 
-                <!-- AniChart -->
-                <h1 id='anichart'>AniChart</h1>
-                <p>AniChart specification is a JSON object that describes a diverse range of animations of the given
+                <!-- Canis -->
+                <h1 id='anichart'>Canis</h1>
+                <p>Canis specification is a JSON object that describes a diverse range of animations of the given
                     visualization charts.</p>
                 <p>The specification has three parameters:</p>
                 <table class="doc-table">
@@ -652,7 +652,7 @@
 
                 <!-- selection -->
                 <h2 id='selection'>Selection</h2>
-                <p>Borrowing form CSS 1-3, AniChart provides a set of tools for matching marks in given charts. The W3C
+                <p>Borrowing form CSS 1-3, Canis provides a set of tools for matching marks in given charts. The W3C
                     CSS specification contains the <a
                         href='https://www.w3.org/TR/CSS21/syndata.html#value-def-identifier'>complete set of rules
                         regarding valid CSS selectors</a>.</p>
@@ -1133,7 +1133,7 @@
                 <p>We can use the following snippet to link to the latest release:</p>
                 <pre>
                     <code>
-&lt;<span class='hl-str'>script</span> src=&quot;http://www.njvis.net/AniChartWeb/anichart.min.js&quot;&gt;&lt;/<span class='hl-str'>script</span>&gt;"</code>
+&lt;<span class='hl-str'>script</span> src=&quot;http://www.njvis.net/CanisWeb/anichart.min.js&quot;&gt;&lt;/<span class='hl-str'>script</span>&gt;"</code>
                 </pre>
 
                 <p>We can create an animated visualization on the web page using the following code:</p>
@@ -1149,7 +1149,7 @@
 &lt;/script&gt;</code>
                 </pre>
 
-                <p>AniChart provides the following variables and functions to create or customize animations.</p>
+                <p>Canis provides the following variables and functions to create or customize animations.</p>
 
                 <h3>aniChart.loadSpec()</h3>
                 <p>This function fetches the AC format spec file at the specified input URL and returns the spec as a
