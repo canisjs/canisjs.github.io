@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>AniChart</title>
+    <title>Canis</title>
     <meta charset="utf-8">
     <link rel='icon' href='logo.ico' type='image/x-icon' />
     <link rel="stylesheet" type="text/css" href="style/style.css" />
@@ -19,6 +19,7 @@
             float: left;
             margin: 10px;
             width: 210px;
+            height: 200px;
             border: 1px solid #dedede;
             border-radius: 4px;
             transition: box-shadow 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
@@ -31,9 +32,9 @@
         }
 
         .list-item-img {
-            display: block;
+            display: flex;
             width: 100%;
-            padding-bottom: 80%;
+            height: 140px;
             background-position: 0% 0%;
             background-size: cover;
             background-repeat: no-repeat;
@@ -60,103 +61,68 @@
             border-bottom: 1px solid #3a3843;
         }
 
-        .gapminder {
-            background-image: url("./img/exmp/gapminder.png");
+        .list-item-img * {
+            opacity: 0;
         }
 
-        .gapminder:hover {
-            background-image: url("./img/exmp/gapminder.gif");
+        .list-item-img:hover {
+            background-image: none;
         }
 
-        .rainday {
-            background-image: url("./img/exmp/rainday.png");
-        }
-
-        .rainday:hover {
-            background-image: url("./img/exmp/rainday.gif");
-        }
-
-        .doughnut {
-            background-image: url("./img/exmp/doughnut.png");
-        }
-
-        .doughnut:hover {
-            background-image: url("./img/exmp/doughnut.gif");
-        }
-
-        .product {
-            background-image: url("./img/exmp/product.png");
-        }
-
-        .product:hover {
-            background-image: url("./img/exmp/product.gif");
-        }
-
-        .calories {
-            background-image: url("./img/exmp/calories.png");
-        }
-
-        .calories:hover {
-            background-image: url("./img/exmp/calories.gif");
+        .list-item-img:hover * {
+            opacity: 1;
         }
 
         .gantt {
-            background-image: url("./img/exmp/gantt.png");
+            background-image: url('img/exmps/gantt.png');
         }
 
-        .gantt:hover {
-            background-image: url("./img/exmp/gantt.gif");
+        .ranking {
+            background-image: url('img/exmps/ranking.png');
         }
 
-        .weather {
-            background-image: url("./img/exmp/weather.png");
+        .purchases {
+            background-image: url('img/exmps/purchases.png');
         }
 
-        .weather:hover {
-            background-image: url("./img/exmp/weather.gif");
+        .mushroom {
+            background-image: url('img/exmps/mushroom.png');
         }
 
         .os {
-            background-image: url("./img/exmp/os.png");
+            background-image: url('img/exmps/os.png');
         }
 
-        .os:hover {
-            background-image: url("./img/exmp/os.gif");
+        .nightingale {
+            background-image: url('img/exmps/nightingale.png');
+        }
+
+        .drill {
+            background-image: url('img/exmps/drill.png');
+        }
+
+        .polioTrans {
+            background-image: url('img/exmps/polioTrans.png');
         }
 
         .polio {
-            background-image: url("./img/exmp/polio.png");
+            background-image: url('img/exmps/polio.png');
         }
 
-        .polio:hover {
-            background-image: url("./img/exmp/polio.gif");
+        .gapminder1 {
+            background-image: url('img/exmps/gapminder1.png');
         }
 
-        .boston {
-            background-image: url("./img/exmp/boston.png");
+        .gapminder2 {
+            background-image: url('img/exmps/gapminder2.png');
         }
 
-        .boston:hover {
-            background-image: url("./img/exmp/boston.gif");
+        .groupedBar {
+            background-image: url('img/exmps/groupedBar.png');
         }
-
-        .gdp {
-            background-image: url("./img/exmp/gdp.png");
-        }
-
-        .gdp:hover {
-            background-image: url("./img/exmp/gdp.gif");
-        }
-
-        .polio2 {
-            background-image: url("./img/exmp/polio2.png");
-        }
-
-        .polio2:hover {
-            background-image: url("./img/exmp/polio2.gif");
-        }
-        
     </style>
+    <script type='text/javascript' src='js/lottie.min.js'></script>
+    <script type='text/javascript' src='js/jquery-3.3.1.min.js'></script>
 </head>
 
 <body>
@@ -176,177 +142,79 @@
     </header>
     <div class='container'>
         <div class='gallery-list'>
-            <!-- <h3>Chart Transitions</h3> -->
-            <div class='list-item' onclick='window.location.href="./gallery/gapminder.html"'>
-                <div class='list-item-img gapminder'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/groupedBar.html"'>
+                <div id='ani0' class='list-item-img groupedBar'></div>
                 <div class='list-item-text'>
-                    <font>Life Expectancy</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/rainday.html"'>
-                <div class='list-item-img rainday'></div>
-                <div class='list-item-text'>
-                    <font>Rain Day</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/doughnut.html"'>
-                <div class='list-item-img doughnut'></div>
-                <div class='list-item-text'>
-                    <font>Doughnut purchases</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/product.html"'>
-                <div class='list-item-img product'></div>
-                <div class='list-item-text'>
-                    <font>Price increasing</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/calories.html"'>
-                <div class='list-item-img calories'></div>
-                <div class='list-item-text'>
-                    <font>Calories burned per hour</font>
+                    <font>Fruit Sale</font>
                 </div>
             </div>
             <div class='list-item' onclick='window.location.href="./gallery/gantt.html"'>
-                <div class='list-item-img gantt'></div>
+                <div id='ani1' class='list-item-img gantt'></div>
                 <div class='list-item-text'>
-                    <font>Event plan</font>
+                    <font>Event Planning</font>
                 </div>
             </div>
-            <div class='list-item' onclick='window.location.href="./gallery/weather.html"'>
-                <div class='list-item-img weather'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/ranking.html"'>
+                <div id='ani2' class='list-item-img ranking'></div>
                 <div class='list-item-text'>
-                    <font>Weather data in 4 cities</font>
+                    <font>Top 10 Best Global Brands Ranking</font>
                 </div>
             </div>
-            <div class='list-item' onclick='window.location.href="./gallery/os.html"'>
-                <div class='list-item-img os'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/line.html"'>
+                <div id='ani3' class='list-item-img purchases'></div>
                 <div class='list-item-text'>
-                    <font>Mobile OS market share</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/polio.html"'>
-                <div class='list-item-img polio'></div>
-                <div class='list-item-text'>
-                    <font>Polio incidence rates 1950s</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/boston.html"'>
-                <div class='list-item-img boston'></div>
-                <div class='list-item-text'>
-                    <font>Boston weather</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/gdp.html"'>
-                <div class='list-item-img gdp'></div>
-                <div class='list-item-text'>
-                    <font>GDP of G7 countries</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/polio2.html"'>
-                <div class='list-item-img polio2'></div>
-                <div class='list-item-text'>
-                    <font>Polio incidence rates 1950 - 1953</font>
-                </div>
-            </div>
-        </div>
-        <!-- <div class='gallery-list'>
-            <h3>Chart Animations</h3>
-            <div class='list-item' onclick='window.location.href="./gallery/ringBar.html"'>
-                <div class='list-item-img ringBar'></div>
-                <div class='list-item-text'>
-                    <font>GDP of G7 Countries</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/boston.html"'>
-                <div class='list-item-img boston'></div>
-                <div class='list-item-text'>
-                    <font>Weather in Boston</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/activity.html"'>
-                <div class='list-item-img activity'></div>
-                <div class='list-item-text'>
-                    <font>Fitbit Activity</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/circleBar.html"'>
-                <div class='list-item-img' style='background-image: url("./img/exmp/circleBar.png")'></div>
-                <div class='list-item-text'>
-                    <font>fdsafsdfdsafds</font>
+                    <font>Doughnut Purchases</font>
                 </div>
             </div>
             <div class='list-item' onclick='window.location.href="./gallery/mushroom.html"'>
-                <div class='list-item-img mushroom'></div>
+                <div id='ani4' class='list-item-img mushroom'></div>
                 <div class='list-item-text'>
-                    <font>Mushroom</font>
+                    <font>Characteristics of Mushrooms</font>
                 </div>
             </div>
-            <div class='list-item' onclick='window.location.href="./gallery/nightingale.html"'>
-                <div class='list-item-img nightingale'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/drill.html"'>
+                <div id='ani5' class='list-item-img drill'></div>
                 <div class='list-item-text'>
-                    <font>Nightingale</font>
+                    <font>Ebay Motorcycle Listings</font>
                 </div>
             </div>
             <div class='list-item' onclick='window.location.href="./gallery/os.html"'>
-                <div class='list-item-img os'></div>
+                <div id='ani6' class='list-item-img os'></div>
                 <div class='list-item-text'>
-                    <font>Mobile OS</font>
+                    <font>Mobile Operating System Market Share</font>
                 </div>
             </div>
-            <div class='list-item' onclick='window.location.href="./gallery/flights.html"'>
-                <div class='list-item-img flights'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/nightingale.html"'>
+                <div id='ani7' class='list-item-img nightingale'></div>
                 <div class='list-item-text'>
-                    <font>Flights</font>
+                    <font>Causes of Mortality over Time</font>
                 </div>
             </div>
-            <div class='list-item' onclick='window.location.href="./gallery/population.html"'>
-                <div class='list-item-img population'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/polio1.html"'>
+                <div id='ani8' class='list-item-img polioTrans'></div>
                 <div class='list-item-text'>
-                    <font>Population</font>
+                    <font>Polio Incidence Rates of the United States</font>
                 </div>
             </div>
-            <div class='list-item' onclick='window.location.href="./gallery/matrix.html"'>
-                <div class='list-item-img matrix'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/polio2.html"'>
+                <div id='ani9' class='list-item-img polio'></div>
                 <div class='list-item-text'>
-                    <font>Polio incidence rates</font>
+                    <font>Polio Incidence Rates of the United States in 1950s</font>
                 </div>
             </div>
-            <div class='list-item' onclick='window.location.href="./gallery/map.html"'>
-                <div class='list-item-img map'></div>
+            <div class='list-item' onclick='window.location.href="./gallery/gapminder1.html"'>
+                <div id='ani10' class='list-item-img gapminder1'></div>
                 <div class='list-item-text'>
-                    <font>Polio incidence rates</font>
+                    <font>Trend of Life expectancy with the Development of Fertility</font>
+                </div>
+            </div>
+            <div class='list-item' onclick='window.location.href="./gallery/gapminder2.html"'>
+                <div id='ani11' class='list-item-img gapminder2'></div>
+                <div class='list-item-text'>
+                    <font>Trend of Life expectancy with the Changing of GDP</font>
                 </div>
             </div>
         </div>
-        <div class='gallery-list'>
-            <h3></h3>
-            <div class='list-item' onclick='window.location.href="./gallery/vegaBar.html"'>
-                <div class='list-item-img vegaBar'></div>
-                <div class='list-item-text'>
-                    <font>Bar Chart</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/bar.html"'>
-                <div class='list-item-img groupedBar'></div>
-                <div class='list-item-text'>
-                    <font>Grouped Bar Chart</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/vegaLine.html"'>
-                <div class='list-item-img vegaLine'></div>
-                <div class='list-item-text'>
-                    <font>Line Chart</font>
-                </div>
-            </div>
-            <div class='list-item' onclick='window.location.href="./gallery/vegaPie.html"'>
-                <div class='list-item-img vegaPie'></div>
-                <div class='list-item-text'>
-                    <font>Pie Chart</font>
-                </div>
-            </div>
-            
-        </div> -->
     </div>
     <footer>
         <div class='footer-content'>
@@ -356,6 +224,186 @@
     </footer>
 
     <script>
+        let ani0 = lottie.loadAnimation({
+            container: document.getElementById('ani0'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/groupedBar.json'
+        });
+
+        $('#ani0').mouseover(() => {
+            ani0.play()
+        })
+        $('#ani0').mouseout(() => {
+            ani0.stop()
+        })
+
+        let ani1 = lottie.loadAnimation({
+            container: document.getElementById('ani1'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/gantt.json'
+        });
+
+        $('#ani1').mouseover(() => {
+            ani1.play()
+        })
+        $('#ani1').mouseout(() => {
+            ani1.stop()
+        })
+
+        let ani2 = lottie.loadAnimation({
+            container: document.getElementById('ani2'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/ranking.json'
+        });
+
+        $('#ani2').mouseover(() => {
+            ani2.play()
+        })
+        $('#ani2').mouseout(() => {
+            ani2.stop()
+        })
+
+        let ani3 = lottie.loadAnimation({
+            container: document.getElementById('ani3'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/purchases.json'
+        });
+
+        $('#ani3').mouseover(() => {
+            ani3.play()
+        })
+        $('#ani3').mouseout(() => {
+            ani3.stop()
+        })
+
+        let ani4 = lottie.loadAnimation({
+            container: document.getElementById('ani4'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/mushroom.json'
+        });
+
+        $('#ani4').mouseover(() => {
+            ani4.play()
+        })
+        $('#ani4').mouseout(() => {
+            ani4.stop()
+        })
+
+        let ani5 = lottie.loadAnimation({
+            container: document.getElementById('ani5'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/drill.json'
+        });
+
+        $('#ani5').mouseover(() => {
+            ani5.play()
+        })
+        $('#ani5').mouseout(() => {
+            ani5.stop()
+        })
+
+        let ani6 = lottie.loadAnimation({
+            container: document.getElementById('ani6'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/os.json'
+        });
+
+        $('#ani6').mouseover(() => {
+            ani6.play()
+        })
+        $('#ani6').mouseout(() => {
+            ani6.stop()
+        })
+
+        let ani7 = lottie.loadAnimation({
+            container: document.getElementById('ani7'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/nightingale.json'
+        });
+
+        $('#ani7').mouseover(() => {
+            ani7.play()
+        })
+        $('#ani7').mouseout(() => {
+            ani7.stop()
+        })
+
+        let ani8 = lottie.loadAnimation({
+            container: document.getElementById('ani8'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/polioTrans.json'
+        });
+
+        $('#ani8').mouseover(() => {
+            ani8.play()
+        })
+        $('#ani8').mouseout(() => {
+            ani8.stop()
+        })
+
+        let ani9 = lottie.loadAnimation({
+            container: document.getElementById('ani9'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/polio.json'
+        });
+
+        $('#ani9').mouseover(() => {
+            ani9.play()
+        })
+        $('#ani9').mouseout(() => {
+            ani9.stop()
+        })
+
+        let ani10 = lottie.loadAnimation({
+            container: document.getElementById('ani10'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'img/exmps/gapminder.json'
+        });
+
+        $('#ani10').mouseover(() => {
+            ani10.play()
+        })
+        $('#ani10').mouseout(() => {
+            ani10.stop()
+        })
+
+        // let ani11 = lottie.loadAnimation({
+        //     container: document.getElementById('ani11'),
+        //     renderer: 'svg',
+        //     loop: true,
+        //     autoplay: false,
+        //     path: 'img/exmps/gapminder2.json'
+        // });
+
+        // $('#ani11').mouseover(() => {
+        //     ani11.play()
+        // })
+        // $('#ani11').mouseout(() => {
+        //     ani11.stop()
+        // })
+
         window.onscroll = function () {
             if (document.body.scrollTop > 680 || document.documentElement.scrollTop > 680) {
                 document.getElementById("backTop").style.bottom = '0px';
