@@ -1,0 +1,86 @@
+.sec {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 16%;
+    margin-top: 40px;
+}
+
+.people-list {
+    width: 100%;
+    display: flex;
+}
+
+.people-item {
+    width: 170px;
+    height: 200px;
+    box-sizing: border-box;
+    margin: 4px;
+}
+
+.people-item .people-img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 4px auto;
+    box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.1) inset;
+}
+
+.people-item h4 {
+    text-align: center;
+    margin: 0;
+}
+
+.people-item p {
+    text-align: center;
+    margin: 0;
+}
+
+.pub-item {
+    width: 100%;
+    display: flex;
+}
+
+.pub-item img {
+    height: 90px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.pub-item .pub-info {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.pub-item .pub-info p, .pub-item .pub-info h4 {
+    margin: 4px 0;
+}
+
+.tge {
+    background-image: url('../../img/people/tge.jpg');
+    background-size: 100% auto;
+}
+
+.yz {
+    background-image: url('../../img/people/yz.jpg');
+    background-size: 100% auto;
+}
+
+.bl {
+    background-image: url('../../img/people/bl.png');
+    background-size: 100% auto;
+}
+
+.yhw {
+    background-image: url('../../img/people/yhw.jpg');
+    background-size: 100% auto;
+}
+
+.dhr {
+    background-image: url('../../img/people/dhr.jpg');
+    background-size: 100% auto;
+}
+
+.bqc {
+    background-image: url('../../img/people/bqc.jpg');
+    background-size: 100% auto;
+}

@@ -4,132 +4,8 @@
     <title>Canis</title>
     <meta charset="utf-8">
     <link rel='icon' href='logo.ico' type='image/x-icon' />
-    <link rel="stylesheet" type="text/css" href="style/style.css" />
-    <style>
-        .teaser {
-            background-image: url('./img/teaserBackground.svg');
-            background-attachment: fixed;
-            width: 100%;
-            height: 600px;
-            margin-bottom: 160px;
-        }
-
-        .teaser-text-container {
-            position: absolute;
-            z-index: 200;
-            width: 600px;
-            padding: 120px 0;
-            margin-left: 16%;
-        }
-
-        .teaser-lottie-container {
-            width: 600px;
-            height: 500px;
-            padding: 120px 0;
-            position: absolute;
-            z-index: 200;
-            margin-left: calc(16% + 660px);
-        }
-
-        .teaser-lottie {
-            display: block;
-            width: 100%;
-            height: 430px;
-        }
-
-        .teaser-shadow {
-            width: 100%;
-            height: 50px;
-            background: radial-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0) 60%);
-        }
-
-        .block {
-            width: 200px;
-            height: 200px;
-            float: left;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .block1 {
-            /* margin-left: 20px; */
-            /* width: 200px;
-            height: 200px; */
-            background: #fefefeff;
-        }
-
-        .block2 {
-            /* margin-top: 40px; */
-            /* width: 160px;
-            height: 160px; */
-            background: #fefefecc;
-            box-shadow: 12px 2px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .block3 {
-            /* margin-top: 20px; */
-            /* width: 180px;
-            height: 180px; */
-            background: #fefefedd;
-            box-shadow: 12px 2px 16px rgba(0, 0, 0, 0.05);
-        }
-
-        .block4 {
-            /* width: 120px;
-            height: 120px; */
-            background: #fefefe88;
-            box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .block5 {
-            /* margin-left: */
-            /* width: 160px;
-            height: 160px; */
-            background: #fefefe99;
-            box-shadow: inset -6px 6px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        /* .shadow-wrapper {
-            float: left;
-            width: 160px;
-            height: 160px;
-            
-            box-shadow:  inset 12px 12px 16px rgba(0, 0, 0, 0.2);
-        } */
-
-        .block6 {
-            /* width: 180px;
-            height: 180px; */
-            background: #fefefecc;
-            box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.05);
-        }
-
-        .block7 {
-            /* width: 140px;
-            height: 140px; */
-            background: #fefefeaa;
-            box-shadow: 12px 12px 16px rgba(0, 0, 0, 0.05);
-        }
-
-        .feature-container {
-            width: 100%;
-            height: 300px;
-            box-sizing: border-box;
-            padding: 0 16%;
-            display: flex;
-            margin-top: 100px;
-        }
-
-        .feature-illus {
-            width: 300px;
-            height: 300px;
-        }
-
-        .feature-text {
-            flex: 1;
-            box-sizing: border-box;
-            padding: 20px 0 0 100px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style/main.css" />
+    <link rel="stylesheet" type="text/css" href="style/page-style/index.css" />
     <script type='text/javascript' src='js/lottie.min.js'></script>
 </head>
 
@@ -144,7 +20,7 @@
                 <li class='active-item'><a href='#'>HOME</a></li>
                 <li><a href='gallery.html'>GALLERY</a></li>
                 <li><a href='tutorial.html'>DOCUMENTATION</a></li>
-                <li><a href='#'>ABOUT</a></li>
+                <li><a href='about.html'>ABOUT</a></li>
             </ul>
         </div>
     </header>
@@ -171,12 +47,9 @@
                     <div id='lottieRender6' class='block6 block'></div>
                     <div id='lottieRender7' class='block7 block'></div>
                 </div>
-
-                <!-- <div class='teaser-shadow'></div> -->
             </div>
         </div>
         <div class='feature-container'>
-            <!-- <img class='feature-illus' src='./img/placeHolder.png' /> -->
             <div class='feature-illus' id='dr1'></div>
             <div class='feature-text'>
                 <h2>High-level Specifications</h2>
@@ -192,11 +65,9 @@
                     data attributes. Mapping each unit to one time interval facilitates a
                     meaningful ordering of animation sequences.</p>
             </div>
-            <!-- <img class='feature-illus' src='./img/placeHolder.png' /> -->
             <div class='feature-illus' style='width: 430px' id='dr2'></div>
         </div>
         <div class='feature-container'>
-            <!-- <img class='feature-illus' src='./img/placeHolder.png' /> -->
             <div class='feature-illus' id='dr3'></div>
             <div class='feature-text'>
                 <h2>Cross-platform Deployment</h2>
@@ -244,13 +115,6 @@
             autoplay: true,
             path: 'img/exmps/nightingale.json'
         });
-        // lottie.loadAnimation({
-        //     container: document.getElementById('lottieRender5'),
-        //     renderer: 'svg',
-        //     loop: true,
-        //     autoplay: true,
-        //     path: 'img/mushroom.json'
-        // });
         lottie.loadAnimation({
             container: document.getElementById('lottieRender6'),
             renderer: 'svg',
@@ -265,7 +129,6 @@
             autoplay: true,
             path: 'img/exmps/purchases.json'
         });
-
         lottie.loadAnimation({
             container: document.getElementById('dr1'),
             renderer: 'svg',
@@ -273,7 +136,6 @@
             autoplay: true,
             path: 'img/dr1.json'
         });
-
         lottie.loadAnimation({
             container: document.getElementById('dr2'),
             renderer: 'svg',
@@ -281,7 +143,6 @@
             autoplay: true,
             path: 'img/dr2.json'
         });
-
         lottie.loadAnimation({
             container: document.getElementById('dr3'),
             renderer: 'svg',
@@ -289,7 +150,6 @@
             autoplay: true,
             path: 'img/dr3.json'
         });
-
         window.onscroll = function () {
             if (document.body.scrollTop > 680 || document.documentElement.scrollTop > 680) {
                 document.getElementById("backTop").style.bottom = '0px';

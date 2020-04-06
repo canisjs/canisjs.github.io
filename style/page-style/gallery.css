@@ -1,0 +1,114 @@
+.gallery-list {
+    width: 100%;
+    padding: 0 16%;
+    box-sizing: border-box;
+    margin-top: 100px;
+    overflow: hidden;
+    /* height: 600px; */
+}
+
+.list-item {
+    float: left;
+    margin: 10px;
+    width: 210px;
+    height: 200px;
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    transition: box-shadow 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.list-item:hover {
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.list-item-img {
+    display: flex;
+    width: 100%;
+    height: 140px;
+    background-position: 0% 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-position 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.list-item-img:hover {
+    background-position: 100% 100%;
+}
+
+.list-item-text {
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.list-item-text font {
+    font-size: 10pt;
+}
+
+h3 {
+    clear: both;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #3a3843;
+}
+
+.list-item-img * {
+    opacity: 0;
+}
+
+.list-item-img:hover {
+    background-image: none;
+}
+
+.list-item-img:hover * {
+    opacity: 1;
+}
+
+.gantt {
+    background-image: url('../../img/exmps/gantt.png');
+}
+
+.ranking {
+    background-image: url('../../img/exmps/ranking.png');
+}
+
+.purchases {
+    background-image: url('../../img/exmps/purchases.png');
+}
+
+.mushroom {
+    background-image: url('../../img/exmps/mushroom.png');
+}
+
+.os {
+    background-image: url('../../img/exmps/os.png');
+}
+
+.nightingale {
+    background-image: url('../../img/exmps/nightingale.png');
+}
+
+.drill {
+    background-image: url('../../img/exmps/drill.png');
+}
+
+.polioTrans {
+    background-image: url('../../img/exmps/polioTrans.png');
+}
+
+.polio {
+    background-image: url('../../img/exmps/polio.png');
+}
+
+.gapminder1 {
+    background-image: url('../../img/exmps/gapminder.png');
+}
+
+.gapminder2 {
+    background-image: url('../../img/exmps/gapminder2.png');
+}
+
+.groupedBar {
+    background-image: url('../../img/exmps/groupedBar.png');
+}
