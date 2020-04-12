@@ -9,7 +9,7 @@
 .teaser-text-container {
     position: absolute;
     z-index: 200;
-    width: 600px;
+    width: 650px;
     padding: 120px 0;
     margin-left: 16%;
 }
@@ -20,7 +20,7 @@
     padding: 120px 0;
     position: absolute;
     z-index: 200;
-    margin-left: calc(16% + 660px);
+    margin-left: calc(16% + 710px);
 }
 
 .teaser-lottie {
